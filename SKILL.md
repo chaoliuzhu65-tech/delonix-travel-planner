@@ -353,18 +353,77 @@ https://www.fliggy.com/hotel/?cityId={city_poi_id}&checkIn={YYYY-MM-DD}&checkOut
 
 ### 4.1 飞书云文档（德胧用户默认交付）
 
-生成方式: 使用 feishu-integration MCP 调用飞书开放平台 API
+生成方式: 使用 feishu-integration MCP（lark-mcp v0.5.1+）
 文档类型: 飞书新版文档（docx）
 权限设置: 组织内可阅读（方便团队共享）
-内容结构:
-  1. 封面标题区: "出差行程规划 · {出发地}→{目的地} · {日期}"
+
+**MCP 工具调用指令**（按顺序执行）:
+
+```yaml
+# Step 1: 创建文档并导入 Markdown 内容
+工具: mcp_call_tool(server="feishu-integration", tool="docx_builtin_import")
+参数:
+  data:
+    file_name: "{目的地}出差行程规划_{日期}"
+    markdown: |
+      # {出发地}→{目的地} 出差行程规划
+      ## 日期: {date_range}
+      （此处写入完整 Markdown 格式的行程报告）
+  useUAT: false  # 使用应用身份
+
+# Step 2: 设置文档权限（可选，团队共享时）
+工具: mcp_call_tool(server="feishu-integration", tool="drive_v1_permissionMember_create")
+参数:
+  path: { token: "{document_id}" }  # 从 Step 1 返回值获取
+  params: { type: "docx", need_notification: true }
+  data:
+    member_type: "openchat"  # 或 "userid" 指定用户
+    member_id: "{chat_id}"   # 群 chat_id
+    perm: "view"             # view / edit / full_access
+
+# Step 3: 发送文档链接到群聊/对话
+工具: mcp_call_tool(server="feishu-integration", tool="im_v1_message_create")
+参数:
+  params: { receive_id_type: "chat_id" }
+  data:
+    receive_id: "{chat_id}"
+    msg_type: "text"
+    content: '{"text": "📝 出行规划已生成\\n\\n链接: https://open.feishu.cn/docx/{document_id}"}'
+```
+
+**lark-mcp 可用工具清单**（共19个）:
+
+| 模块 | 工具 | 用途 |
+|------|------|------|
+| docx | `docx_builtin_import` | 导入 Markdown 创建文档 |
+| docx | `docx_builtin_search` | 搜索文档 |
+| docx | `docx_v1_document_rawContent` | 读取文档内容 |
+| drive | `drive_v1_permissionMember_create` | 设置文档权限 |
+| im | `im_v1_message_create` | 发送消息 |
+| im | `im_v1_message_list` | 读取消息列表 |
+| im | `im_v1_chat_list` | 获取群列表 |
+| im | `im_v1_chat_create` | 创建群聊 |
+| im | `im_v1_chatMembers_get` | 获取群成员 |
+| bitable | `bitable_v1_app_create` | 创建多维表格 |
+| bitable | `bitable_v1_appTable_create` | 创建数据表 |
+| bitable | `bitable_v1_appTableRecord_create` | 新增记录 |
+| bitable | `bitable_v1_appTableRecord_search` | 搜索记录 |
+| bitable | `bitable_v1_appTableRecord_update` | 更新记录 |
+| bitable | `bitable_v1_appTableField_list` | 列出字段 |
+| bitable | `bitable_v1_appTable_list` | 列出数据表 |
+| contact | `contact_v3_user_batchGetId` | 批量获取用户ID |
+| wiki | `wiki_v1_node_search` | 搜索知识库节点 |
+| wiki | `wiki_v2_space_getNode` | 获取知识库空间节点 |
+
+内容结构（Markdown 格式）:
+  1. 标题: "# {出发地}→{目的地} 出差行程规划"
   2. ⭐ 德胧酒店推荐卡片（品牌色高亮）
-  3. 交通方案对比表
-  4. 行程时间线
-  5. 预算明细表
+  3. 交通方案对比表（Markdown 表格）
+  4. 行程时间线（列表）
+  5. 预算明细表（Markdown 表格）
   6. 目的地攻略
   7. 备选预订渠道（次要区域）
-  8. 出行清单（可勾选）
+  8. 出行清单（Markdown 任务列表）
 优势:
   - ✅ 德胧团队可直接在线查看、评论、@同事
   - ✅ 支持多人协作编辑
