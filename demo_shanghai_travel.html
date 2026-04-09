@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德胧商旅出行规划 · 上海 · 2026-05-15</title>
+    <style>
+        :root {
+            --delonix-blue: #1E3A8A;
+            --betterwood-orange: #F59E0B;
+            --marriott-gold: #C69214;
+            --ctrip-green: #00A680;
+            --fliggy-red: #FF6B6B;
+            --gray-light: #F3F4F6;
+            --gray-dark: #4B5563;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+            color: #1F2937;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--delonix-blue);
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+        
+        h1 {
+            color: var(--delonix-blue);
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: var(--gray-dark);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .trip-summary {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--betterwood-orange);
+        }
+        
+        .trip-summary h2 {
+            color: var(--delonix-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .trip-summary h2::before {
+            content: "🗓";
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        section h2 {
+            color: var(--delonix-blue);
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E5E7EB;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hotel-primary h2::before {
+            content: "⭐";
+        }
+        
+        .transport h2::before {
+            content: "🚄";
+        }
+        
+        .budget h2::before {
+            content: "💰";
+        }
+        
+        .fallback-channels h2::before {
+            content: "📋";
+        }
+        
+        .hotel-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .hotel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hotel-card h3 {
+            color: var(--delonix-blue);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .hotel-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+            color: var(--gray-dark);
+        }
+        
+        .hotel-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .rating {
+            color: #F59E0B;
+            font-weight: bold;
+        }
+        
+        .booking-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--delonix-blue) 0%, #2D4BA8 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2D4BA8 0%, #3B5FCC 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(30, 58, 138, 0.3);
+        }
+        
+        .btn-fallback {
+            background: white;
+            color: var(--gray-dark);
+            border: 1px solid #D1D5DB;
+        }
+        
+        .btn-fallback:hover {
+            background: #F9FAFB;
+            border-color: var(--gray-dark);
+        }
+        
+        .btn-marriott {
+            background: linear-gradient(135deg, var(--marriott-gold) 0%, #D4A017 100%);
+            color: white;
+        }
+        
+        .btn-ctrip {
+            background: linear-gradient(135deg, var(--ctrip-green) 0%, #00C08B 100%);
+            color: white;
+        }
+        
+        .btn-fliggy {
+            background: linear-gradient(135deg, var(--fliggy-red) 0%, #FF8585 100%);
+            color: white;
+        }
+        
+        .transport-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .transport-card {
+            background: #F9FAFB;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid var(--delonix-blue);
+        }
+        
+        .transport-card h3 {
+            color: var(--delonix-blue);
+            margin-bottom: 10px;
+        }
+        
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .budget-table th {
+            background: var(--delonix-blue);
+            color: white;
+            text-align: left;
+            padding: 15px;
+        }
+        
+        .budget-table td {
+            padding: 15px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .budget-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .budget-table tr:nth-child(even) {
+            background: #F9FAFB;
+        }
+        
+        .total-row {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%) !important;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .fallback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .fallback-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .fallback-card h4 {
+            margin-bottom: 10px;
+            color: var(--gray-dark);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #E5E7EB;
+            color: var(--gray-dark);
+            font-size: 14px;
+        }
+        
+        .footer-note {
+            background: #F0F9FF;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--betterwood-orange);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .transport-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <!-- 德胧集团Logo占位 -->
+                <div style="background: var(--delonix-blue); color: white; padding: 8px 16px; border-radius: 8px; font-weight: bold;">
+                    德胧集团 DELONIX
+                </div>
+                <div style="background: var(--betterwood-orange); color: white; padding: 8px 16px; border-radius: 8px; font-weight: bold;">
+                    百达屋 BETTERWOOD
+                </div>
+            </div>
+            <h1>德胧商旅出行规划报告</h1>
+            <div class="subtitle">杭州 → 上海 · 2026年5月15-16日</div>
+            <div class="subtitle">出行身份：德胧旗下店总 · 区域会议差旅</div>
+        </header>
+        
+        <div class="trip-summary">
+            <h2>行程摘要</h2>
+            <p>5月15日上午区域会议，从杭州出发。推荐入住德胧旗下虹桥国家会展中心开元名庭，距会场最近。高铁35分钟直达，总预算约¥960-1,160。</p>
+        </div>
+        
+        <section class="hotel-primary">
+            <h2>⭐ 首选推荐：德胧旗下酒店</h2>
+            
+            <div class="hotel-card">
+                <h3>上海虹桥机场国家会展中心开元名庭</h3>
+                <div class="hotel-meta">
+                    <span>🏨 品牌：<strong>开元名庭</strong>（德胧集团）</span>
+                    <span>📍 区域：闵行区北沈路158号</span>
+                    <span>⭐ 评分：<span class="rating">4.6</span>/5.0（携程）</span>
+                    <span>💰 参考价：¥400-600/晚</span>
+                    <span>🚗 距国家会展中心：<strong>最近</strong>（驾车5分钟）</span>
+                </div>
+                
+                <p>德胧集团旗下开元名庭品牌，唐风美学设计，设施齐全。作为德胧旗下店总，推荐通过百达屋APP预订，享受会员最优价+时光值累积。</p>
+                
+                <div class="booking-buttons">
+                    <a href="https://www.betterwood.com/" target="_blank" class="btn btn-primary">
+                        🏨 百达屋APP预订（会员最优价）
+                    </a>
+                    <a href="https://apps.apple.com/cn/app/百达屋/id1592074431" target="_blank" class="btn btn-fallback">
+                        📱 下载百达屋APP（iOS）
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hotel-card">
+                <h3>上海开元名庭酒店（青浦）</h3>
+                <div class="hotel-meta">
+                    <span>🏨 品牌：<strong>开元名庭</strong>（德胧集团）</span>
+                    <span>📍 区域：青浦区业锦路451弄1号</span>
+                    <span>⭐ 评分：<span class="rating">4.8</span>/5.0（携程）</span>
+                    <span>💰 参考价：¥350-550/晚</span>
+                    <span>🚗 距国家会展中心：较近（驾车15分钟）</span>
+                </div>
+                
+                <p>青浦区优质开元名庭，评分4.8分。如虹桥店满房，此店为优质备选。</p>
+                
+                <div class="booking-buttons">
+                    <a href="https://www.betterwood.com/" target="_blank" class="btn btn-primary">
+                        🏨 百达屋APP预订
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="transport">
+            <h2>🚄 交通方案：杭州 → 上海</h2>
+            
+            <div class="transport-options">
+                <div class="transport-card">
+                    <h3>高铁推荐班次</h3>
+                    <p><strong>G7358</strong> 杭州东 → 上海虹桥</p>
+                    <p>⏰ 07:30 → 08:05（35分钟）</p>
+                    <p>💰 ¥87（二等座） / ¥140（一等座）</p>
+                    <p>📍 上海虹桥站 → 打车5分钟到酒店</p>
+                    <div style="margin-top: 15px;">
+                        <a href="https://www.12306.cn/" target="_blank" class="btn btn-primary">
+                            🚄 12306查票/购票
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="transport-card">
+                    <h3>备选班次</h3>
+                    <p><strong>G7360</strong> 杭州东 → 上海虹桥</p>
+                    <p>⏰ 08:00 → 08:35（35分钟）</p>
+                    <p>💰 ¥87（二等座）</p>
+                    <p>📍 适合稍晚出发</p>
+                    <div style="margin-top: 15px;">
+                        <a href="https://www.12306.cn/" target="_blank" class="btn btn-fallback">
+                            🔍 查看全部班次
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #F0F9FF; border-radius: 8px;">
+                <p><strong>💡 建议</strong>：乘坐7:30班次，8:05到达上海虹桥，打车5分钟到酒店，9:00前可到达会议现场。</p>
+            </div>
+        </section>
+        
+        <section class="budget">
+            <h2>💰 预算明细（舒适档）</h2>
+            
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>项目</th>
+                        <th>明细</th>
+                        <th>金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🚄 高铁往返</td>
+                        <td>杭州东↔上海虹桥（二等座）</td>
+                        <td>¥280</td>
+                    </tr>
+                    <tr>
+                        <td>🏨 住宿1晚</td>
+                        <td>虹桥开元名庭（会员价）</td>
+                        <td>¥400-600</td>
+                    </tr>
+                    <tr>
+                        <td>🍽️ 餐饮</td>
+                        <td>早餐+午餐+晚餐（1天）</td>
+                        <td>¥200</td>
+                    </tr>
+                    <tr>
+                        <td>🚕 市内交通</td>
+                        <td>打车/地铁（机场/会场往返）</td>
+                        <td>¥80</td>
+                    </tr>
+                    <tr>
+                        <td>📱 通讯杂费</td>
+                        <td>网络/打印/其他</td>
+                        <td>¥50</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>总计</strong></td>
+                        <td><strong>德胧商旅标准</strong></td>
+                        <td><strong>¥960 - 1,160</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #F0F9FF; border-radius: 8px;">
+                <p><strong>📝 说明</strong>：百达屋会员价已包含早餐。如选择青浦开元名庭，住宿可节省¥50-100。</p>
+            </div>
+        </section>
+        
+        <section class="fallback-channels">
+            <h2>📋 备选预订渠道</h2>
+            <p style="margin-bottom: 20px; color: var(--gray-dark);">如需比价或有其他需求，以下渠道也可预订德胧旗下酒店（标注为备选）：</p>
+            
+            <div class="fallback-grid">
+                <div class="fallback-card">
+                    <h4>备选①：万豪旅享家</h4>
+                    <p>仅限臻品之选品牌</p>
+                    <p style="margin: 10px 0; color: var(--marriott-gold); font-weight: bold;">上海暂无门店</p>
+                    <a href="https://www.marriott.com.cn/" target="_blank" class="btn btn-marriott" style="padding: 8px 16px; font-size: 14px;">
+                        访问万豪官网
+                    </a>
+                </div>
+                
+                <div class="fallback-card">
+                    <h4>备选②：携程</h4>
+                    <p>比价参考 · 企业协议价</p>
+                    <div style="margin: 15px 0;">
+                        <a href="https://hotels.ctrip.com/hotels/127797575.html" target="_blank" class="btn btn-ctrip" style="padding: 8px 16px; font-size: 14px; margin-bottom: 8px; display: block;">
+                            虹桥开元名庭
+                        </a>
+                        <a href="https://hotels.ctrip.com/hotels/29401375.html" target="_blank" class="btn btn-ctrip" style="padding: 8px 16px; font-size: 14px; display: block;">
+                            青浦开元名庭
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="fallback-card">
+                    <h4>备选②：飞猪</h4>
+                    <p>阿里系用户 · 会员价</p>
+                    <a href="https://www.fliggy.com/hotel/?cityId=310000&checkIn=2026-05-15&checkOut=2026-05-16&keyword=开元名庭" target="_blank" class="btn btn-fliggy" style="padding: 8px 16px; font-size: 14px; margin-top: 15px;">
+                        飞猪搜索
+                    </a>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #FEF3C7; border-radius: 8px; border-left: 4px solid var(--betterwood-orange;">
+                <p><strong>⚠️ 重要提示</strong>：百达屋APP预订享受<strong>会员最优价保证</strong>，且可累积时光值（住十兑一）。备选渠道仅供比价参考。</p>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="footer-note">
+                <p>📱 <strong>推荐使用百达屋APP预订</strong>：享受德胧旗下店总专属会员价 + 时光值累积 + 住十兑一权益</p>
+                <p style="margin-top: 8px; font-size: 13px;">如需要百达屋APP Deep Link（bdwhotel://）或小程序Scheme，请联系德胧技术团队提供接口文档。</p>
+            </div>
+            
+            <p>© 2026 德胧酒店集团（Delonix Group）· 百达屋（Betterwood）会员服务</p>
+            <p style="margin-top: 10px; font-size: 12px; color: #9CA3AF;">本报告由德胧商旅出行规划技能 v2.1 生成 · 生成时间：2026-04-09 11:35</p>
+            <p style="margin-top: 5px; font-size: 12px; color: #9CA3AF;">所有链接均为真实可跳转链接，点击即可访问对应平台</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为所有按钮添加点击反馈
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    // 添加点击动画
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                    
+                    // 如果是外部链接，记录点击（实际项目中可发送统计）
+                    if (this.getAttribute('href') && this.getAttribute('href').startsWith('http')) {
+                        console.log('跳转到:', this.getAttribute('href'));
+                    }
+                });
+            });
+            
+            // 显示当前时间
+            const now = new Date();
+            const timeStr = now.toLocaleString('zh-CN', { 
+                year: 'numeric', 
+                month: '2-digit', 
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            const timeElement = document.createElement('p');
+            timeElement.style.fontSize = '12px';
+            timeElement.style.color = '#9CA3AF';
+            timeElement.style.marginTop = '5px';
+            timeElement.textContent = '页面加载时间：' + timeStr;
+            document.querySelector('footer').appendChild(timeElement);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "delonix-travel-planner",
+  "displayName": "德胧商旅出行规划",
+  "version": "3.0.0",
+  "description": "垂直于德胧酒店集团的智能商旅出行规划能力，百达屋优先推荐 + 12306实时查票 + 高德地图集成 + HTML报告生成",
+  "repository": "https://github.com/chaoliuzhu65-tech/delonix-travel-planner",
+  "homepage": "https://chaoliuzhu65-tech.github.io/delonix-travel-planner/",
+  "license": "MIT",
+  "triggers": ["出差","商旅","出行规划","德胧","百达屋","开元","名都","名庭"],
+  "dependencies": {
+    "12306-mcp": "npx -y 12306-mcp",
+    "amap-mcp": "https://mcp.amap.com/sse?key={AMAP_WEB_KEY}",
+    "xhs-mcp": "npx -y xhs-mcp (optional)"
+  },
+  "tags": ["travel","business-trip","delonix","hotel","planner","amap","12306","betterwood"]
+}

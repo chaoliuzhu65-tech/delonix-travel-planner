@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德胧商旅出行规划 · 天津→重庆 · 2026-04-23</title>
+    <style>
+        :root {
+            --delonix-blue: #1E3A8A;
+            --delonix-light-blue: #3B5FCC;
+            --betterwood-orange: #F59E0B;
+            --marriott-gold: #C69214;
+            --ctrip-green: #00A680;
+            --fliggy-red: #FF6B6B;
+            --gray-light: #F3F4F6;
+            --gray-dark: #4B5563;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Roboto, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #EEF2FF 0%, #F3F4F6 50%, #FEF3C7 100%);
+            color: #1F2937;
+            line-height: 1.6;
+            padding: 15px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--delonix-blue) 0%, #1E40AF 50%, #2563EB 100%);
+            color: white;
+            padding: 35px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-tag {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-tag.orange {
+            background: rgba(245, 158, 11, 0.9);
+            color: white;
+        }
+        
+        .badge {
+            background: var(--betterwood-orange);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .route-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .route-city {
+            font-weight: 700;
+            font-size: 22px;
+        }
+        
+        .route-arrow {
+            color: var(--betterwood-orange);
+            font-size: 24px;
+        }
+        
+        .trip-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .trip-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Content */
+        .content {
+            padding: 30px;
+        }
+        
+        /* Trip Summary Card */
+        .summary-card {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 35px;
+            border-left: 6px solid var(--betterwood-orange);
+            position: relative;
+        }
+        
+        .summary-card h2 {
+            color: var(--delonix-blue);
+            font-size: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .summary-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px 16px;
+            border-radius: 10px;
+        }
+        
+        .summary-item .label {
+            font-size: 12px;
+            color: var(--gray-dark);
+            margin-bottom: 4px;
+        }
+        
+        .summary-item .value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--delonix-blue);
+        }
+        
+        /* Section styling */
+        section {
+            margin-bottom: 40px;
+        }
+        
+        section h2 {
+            color: var(--delonix-blue);
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #E5E7EB;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        section h2 .icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .icon-hotel { background: linear-gradient(135deg, var(--delonix-blue), #2563EB); }
+        .icon-transport { background: linear-gradient(135deg, #059669, #10B981); }
+        .icon-schedule { background: linear-gradient(135deg, var(--betterwood-orange), #D97706); }
+        .icon-budget { background: linear-gradient(135deg, #7C3AED, #8B5CF6); }
+        .icon-fallback { background: linear-gradient(135deg, #9CA3AF, #6B7280); }
+        .icon-tips { background: linear-gradient(135deg, #DC2626, #EF4444); }
+        
+        /* Hotel Cards */
+        .hotel-card {
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .hotel-card:hover {
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.12);
+            transform: translateY(-3px);
+        }
+        
+        .hotel-card-header {
+            background: linear-gradient(135deg, var(--delonix-blue) 0%, #2563EB 100%);
+            color: white;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hotel-card-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .hotel-badge {
+            background: var(--betterwood-orange);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .hotel-card-body {
+            padding: 20px 25px;
+        }
+        
+        .hotel-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-bottom: 15px;
+            color: var(--gray-dark);
+            font-size: 14px;
+        }
+        
+        .hotel-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .rating {
+            color: #F59E0B;
+            font-weight: 800;
+            font-size: 16px;
+        }
+        
+        .highlight-tag {
+            display: inline-block;
+            background: #EFF6FF;
+            color: var(--delonix-blue);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+        
+        .hotel-distance {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        .hotel-distance strong {
+            color: #059669;
+        }
+        
+        .booking-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--delonix-blue) 0%, #2563EB 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 58, 138, 0.4);
+        }
+        
+        .btn-fallback {
+            background: white;
+            color: var(--gray-dark);
+            border: 2px solid #D1D5DB;
+        }
+        
+        .btn-fallback:hover {
+            background: #F9FAFB;
+            border-color: var(--gray-dark);
+        }
+        
+        .btn-ctrip { background: var(--ctrip-green); color: white; }
+        .btn-ctrip:hover { background: #00C08B; }
+        .btn-fliggy { background: var(--fliggy-red); color: white; }
+        .btn-fliggy:hover { background: #FF8585; }
+        
+        /* Transport */
+        .transport-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .transport-tab {
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            border: 2px solid #E5E7EB;
+            background: white;
+            color: var(--gray-dark);
+        }
+        
+        .transport-tab.active {
+            background: var(--delonix-blue);
+            color: white;
+            border-color: var(--delonix-blue);
+        }
+        
+        .transport-tab.recommended {
+            position: relative;
+        }
+        
+        .transport-tab.recommended::after {
+            content: '推荐';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--betterwood-orange);
+            color: white;
+            padding: 1px 6px;
+            border-radius: 8px;
+            font-size: 10px;
+        }
+        
+        .transport-panel {
+            display: none;
+        }
+        
+        .transport-panel.active {
+            display: block;
+        }
+        
+        .transport-card {
+            background: #F9FAFB;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--delonix-blue);
+        }
+        
+        .transport-card.best {
+            border-left-color: var(--betterwood-orange);
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+        }
+        
+        .transport-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .transport-header h3 {
+            color: var(--delonix-blue);
+            font-size: 18px;
+        }
+        
+        .transport-time {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .transport-time .time {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--delonix-blue);
+        }
+        
+        .transport-time .duration {
+            background: var(--delonix-blue);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .transport-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #DC2626;
+        }
+        
+        .transport-price .unit {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--gray-dark);
+        }
+        
+        .transport-note {
+            font-size: 13px;
+            color: var(--gray-dark);
+            margin-top: 8px;
+        }
+        
+        /* Schedule Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--delonix-blue), var(--betterwood-orange), #9CA3AF);
+        }
+        
+        .timeline-day {
+            margin-bottom: 30px;
+        }
+        
+        .timeline-day-header {
+            background: var(--delonix-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .timeline-day-header.day2 {
+            background: var(--betterwood-orange);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 18px;
+            padding: 15px 20px;
+            background: #F9FAFB;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+        
+        .timeline-item:hover {
+            background: #F0F9FF;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 20px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--delonix-blue);
+        }
+        
+        .timeline-item.transport::before {
+            border-color: #059669;
+        }
+        
+        .timeline-item.meeting::before {
+            border-color: var(--betterwood-orange);
+            background: var(--betterwood-orange);
+        }
+        
+        .timeline-item .time-range {
+            font-weight: 700;
+            color: var(--delonix-blue);
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-item .activity {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-item .detail {
+            font-size: 13px;
+            color: var(--gray-dark);
+        }
+        
+        .timeline-item .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        
+        .tag-transport { background: #D1FAE5; color: #059669; }
+        .tag-meeting { background: #FEF3C7; color: #92400E; }
+        .tag-meal { background: #FEE2E2; color: #991B1B; }
+        .tag-hotel { background: #E0E7FF; color: #3730A3; }
+        
+        /* Budget */
+        .budget-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .budget-table th {
+            background: linear-gradient(135deg, var(--delonix-blue) 0%, #2563EB 100%);
+            color: white;
+            text-align: left;
+            padding: 14px 18px;
+            font-weight: 600;
+        }
+        
+        .budget-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        
+        .budget-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .budget-table tbody tr:hover {
+            background: #F0F9FF;
+        }
+        
+        .total-row {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%) !important;
+        }
+        
+        .total-row td {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--delonix-blue) !important;
+        }
+        
+        /* Fallback */
+        .fallback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        
+        .fallback-card {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .fallback-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fallback-card h4 {
+            margin-bottom: 8px;
+            color: var(--gray-dark);
+            font-size: 15px;
+        }
+        
+        .fallback-card .price {
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-bottom: 12px;
+        }
+        
+        .fallback-note {
+            background: #FFF7ED;
+            border: 1px solid #FED7AA;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+        
+        /* Tips */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .tip-card {
+            border-radius: 12px;
+            padding: 18px;
+            border-left: 4px solid;
+        }
+        
+        .tip-card.weather { background: #EFF6FF; border-color: #3B82F6; }
+        .tip-card.clothing { background: #F0FDF4; border-color: #22C55E; }
+        .tip-card.food { background: #FFF7ED; border-color: #F97316; }
+        .tip-card.packing { background: #FDF2F8; border-color: #EC4899; }
+        
+        .tip-card h4 {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .tip-card ul {
+            padding-left: 18px;
+            font-size: 13px;
+        }
+        
+        .tip-card li {
+            margin-bottom: 4px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #F9FAFB;
+            padding: 25px 30px;
+            text-align: center;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        .footer-cta {
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            border: 2px solid #BFDBFE;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-cta p {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--delonix-blue);
+            margin-bottom: 8px;
+        }
+        
+        .footer-cta small {
+            font-size: 13px;
+            color: var(--gray-dark);
+        }
+        
+        footer .copyright {
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-top: 12px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            h1 { font-size: 24px; }
+            .content { padding: 20px; }
+            .booking-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .transport-tabs { gap: 6px; }
+            .transport-tab { padding: 6px 14px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-top">
+                <div class="logo-group">
+                    <span class="logo-tag">德胧集团 DELONIX</span>
+                    <span class="logo-tag orange">百达屋 BETTERWOOD</span>
+                </div>
+                <span class="badge">⭐ 德胧优先推荐</span>
+            </div>
+            <h1>🧳 德胧商旅出行规划报告</h1>
+            <div class="route-info">
+                <span class="route-city">天津</span>
+                <span class="route-arrow">✈️ →</span>
+                <span class="route-city">重庆</span>
+            </div>
+            <div class="trip-meta">
+                <span>📅 2026年4月22-24日（3天2晚）</span>
+                <span>👔 德胧集团店总</span>
+                <span>🎯 电总回家日活动 + 直营店会议</span>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Trip Summary -->
+            <div class="summary-card">
+                <h2>📋 行程概览</h2>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="label">📅 出发日期</div>
+                        <div class="value">4月22日（周二）</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">📍 目的地</div>
+                        <div class="value">重庆 · 南岸区</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">🏨 推荐酒店</div>
+                        <div class="value">重庆开元名都酒店</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">🗓 会议日期</div>
+                        <div class="value">4月23-24日</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">⏰ 建议出发</div>
+                        <div class="value">4月22日早班飞机</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">💰 预估总预算</div>
+                        <div class="value">¥3,200 - 4,500</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Transportation -->
+            <section class="transport">
+                <h2><span class="icon icon-transport">🚄</span> 交通方案：天津 → 重庆</h2>
+                
+                <div class="transport-tabs">
+                    <div class="transport-tab recommended active" onclick="switchTab('flight')">✈️ 飞机（推荐）</div>
+                    <div class="transport-tab" onclick="switchTab('train')">🚄 高铁（备选）</div>
+                </div>
+                
+                <!-- Flight Panel -->
+                <div id="panel-flight" class="transport-panel active">
+                    <div class="transport-card best">
+                        <div class="transport-header">
+                            <h3>✈️ 推荐方案：天津滨海→重庆江北（直飞）</h3>
+                            <div class="transport-price">¥600-900 <span class="unit">单程</span></div>
+                        </div>
+                        <div class="transport-time">
+                            <span>天津滨海 TSN</span>
+                            <span class="time">07:00</span>
+                            <span class="duration">约2.5小时</span>
+                            <span class="time">09:30</span>
+                            <span>重庆江北 CKG</span>
+                        </div>
+                        <p class="transport-note">📍 重庆江北机场→渝中区开元名都酒店：打车约30分钟，地铁10号线→6号线约45分钟</p>
+                        <div style="margin-top: 12px;">
+                            <a href="https://flights.ctrip.com/online/list/oneway-TSN-CKG?depdate=2026-04-22&cabin=y" target="_blank" class="btn btn-primary">✈️ 携程查票/购票</a>
+                            <a href="https://www.fliggy.com/flight/?searchType=1&depCity=天津&arrCity=重庆&depDate=2026-04-22" target="_blank" class="btn btn-fliggy" style="margin-left: 10px;">飞猪查票</a>
+                        </div>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <div class="transport-header">
+                            <h3>备选航班（午间出发）</h3>
+                            <div class="transport-price">¥500-800 <span class="unit">单程</span></div>
+                        </div>
+                        <div class="transport-time">
+                            <span>天津滨海 TSN</span>
+                            <span class="time">13:00</span>
+                            <span class="duration">约2.5小时</span>
+                            <span class="time">15:30</span>
+                            <span>重庆江北 CKG</span>
+                        </div>
+                        <p class="transport-note">⚠️ 22日午间出发当天下午无法完成会场筹备，建议选择早班机</p>
+                    </div>
+                    
+                    <div style="background: #EFF6FF; border-radius: 10px; padding: 15px; margin-top: 15px;">
+                        <p><strong>💡 为什么推荐飞机？</strong></p>
+                        <p>天津→重庆高铁需约10小时（中转），而直飞仅需2.5小时。22日早班出发，上午到达，下午即可前往会场筹备。</p>
+                    </div>
+                </div>
+                
+                <!-- Train Panel -->
+                <div id="panel-train" class="transport-panel">
+                    <div class="transport-card">
+                        <div class="transport-header">
+                            <h3>🚄 方案一：G1709（直达）</h3>
+                            <div class="transport-price">¥898 <span class="unit">二等座</span></div>
+                        </div>
+                        <div class="transport-time">
+                            <span>天津西</span>
+                            <span class="time">08:05</span>
+                            <span class="duration">9小时48分</span>
+                            <span class="time">17:53</span>
+                            <span>重庆北</span>
+                        </div>
+                        <p class="transport-note">⚠️ 17:53到达重庆北，当天下午无法完成会场筹备，需22日晚出发</p>
+                        <div style="margin-top: 12px;">
+                            <a href="https://www.12306.cn/" target="_blank" class="btn btn-primary">🚄 12306查票/购票</a>
+                        </div>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <div class="transport-header">
+                            <h3>🚄 方案二：G6271→G1197（经石家庄中转）</h3>
+                            <div class="transport-price">¥897 <span class="unit">二等座</span></div>
+                        </div>
+                        <div class="transport-time">
+                            <span>天津西</span>
+                            <span class="time">06:50</span>
+                            <span class="duration">10小时57分</span>
+                            <span class="time">17:47</span>
+                            <span>重庆西</span>
+                        </div>
+                        <p class="transport-note">⚠️ 石家庄中转58分钟，全程近11小时</p>
+                    </div>
+                    
+                    <div style="background: #FEF3C7; border-radius: 10px; padding: 15px; margin-top: 15px;">
+                        <p><strong>⚠️ 高铁方案提示</strong></p>
+                        <p>高铁需近11小时，如选择高铁建议<strong>4月21日晚出发</strong>或<strong>4月22日早出发</strong>，但22日无法完成会场筹备模拟。</p>
+                        <p>如时间充裕且想体验沿途风景，高铁也是不错的选择。</p>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 20px; font-size: 14px; color: var(--gray-dark);">
+                    <strong>返程</strong>：4月24日会议18:00结束后，建议选择21:00后航班或高铁返程。建议预订25日早班以便24日晚休息。
+                </p>
+            </section>
+            
+            <!-- Hotels -->
+            <section class="hotel-section">
+                <h2><span class="icon icon-hotel">🏨</span> ⭐ 首选推荐：德胧旗下酒店</h2>
+                
+                <div class="hotel-card">
+                    <div class="hotel-card-header">
+                        <h3>重庆开元名都酒店</h3>
+                        <span class="hotel-badge">⭐ 首选推荐</span>
+                    </div>
+                    <div class="hotel-card-body">
+                        <div class="hotel-meta">
+                            <span>🏨 品牌：<strong>开元名都 · 臻品之选</strong>（德胧集团）</span>
+                            <span>📍 地址：渝中区民族路1号</span>
+                            <span>⭐ 评分：<span class="rating">4.6</span>/5.0</span>
+                            <span>💰 参考价：¥800-1,500/晚</span>
+                        </div>
+                        
+                        <div>
+                            <span class="highlight-tag">32F高空大堂</span>
+                            <span class="highlight-tag">俯瞰两江交汇</span>
+                            <span class="highlight-tag">山海极宴餐厅</span>
+                            <span class="highlight-tag">步行5min洪崖洞</span>
+                            <span class="highlight-tag">2026新开业</span>
+                        </div>
+                        
+                        <div class="hotel-distance">
+                            <strong>📍 会场距离</strong>：重庆国际会议展览中心（南岸区）→ 渝中区民族路1号<br>
+                            距离约5.3公里，驾车约15-20分钟（过长江大桥），地铁6号线直达约25分钟
+                        </div>
+                        
+                        <p style="font-size: 14px; margin-top: 10px;">
+                            作为德胧旗下店总，推荐入住自家庄园品牌酒店。开元名都·臻品之选是德胧与万豪双品牌合作的高端系列，设施一流，位于解放碑核心位置，交通便利。
+                        </p>
+                        
+                        <div class="booking-buttons">
+                            <a href="https://www.betterwood.com/" target="_blank" class="btn btn-primary">
+                                🏨 百达屋APP预订（⭐会员最优价）
+                            </a>
+                            <a href="https://apps.apple.com/cn/app/百达屋/id1592074431" target="_blank" class="btn btn-fallback">
+                                📱 下载百达屋APP
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hotel-card">
+                    <div class="hotel-card-header">
+                        <h3>重庆解放碑开元名庭</h3>
+                        <span class="hotel-badge" style="background: #059669;">德胧旗下</span>
+                    </div>
+                    <div class="hotel-card-body">
+                        <div class="hotel-meta">
+                            <span>🏨 品牌：<strong>开元名庭</strong>（德胧集团）</span>
+                            <span>📍 地址：渝中区解放碑</span>
+                            <span>⭐ 评分：<span class="rating">4.5</span>/5.0</span>
+                            <span>💰 参考价：¥400-700/晚</span>
+                        </div>
+                        <p style="font-size: 14px;">
+                            开元名庭定位中高端商务，唐风美学设计，位于解放碑商圈核心。如追求性价比，此店为优质备选。
+                        </p>
+                        <div class="booking-buttons">
+                            <a href="https://www.betterwood.com/" target="_blank" class="btn btn-primary">
+                                🏨 百达屋APP预订
+                            </a>
+                            <a href="https://hotels.ctrip.com/hotels/132460794.html" target="_blank" class="btn btn-fallback">
+                                备选：携程查看
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Schedule Timeline -->
+            <section class="schedule">
+                <h2><span class="icon icon-schedule">📅</span> 详细行程时间线</h2>
+                
+                <div class="timeline">
+                    <!-- Day 0: 4月22日 -->
+                    <div class="timeline-day">
+                        <div class="timeline-day-header">📅 4月22日（周二）· 出发日</div>
+                        
+                        <div class="timeline-item transport">
+                            <div class="time-range">06:30 - 07:00</div>
+                            <div class="activity">🚕 前往天津滨海机场</div>
+                            <div class="detail">建议提前2小时到达机场，办理值机 + 安检</div>
+                        </div>
+                        
+                        <div class="timeline-item transport">
+                            <div class="time-range">07:00 - 09:30</div>
+                            <div class="activity">✈️ 天津→重庆 直飞
+                                <span class="tag tag-transport">飞行2.5h</span>
+                            </div>
+                            <div class="detail">早班机，到达重庆江北机场</div>
+                        </div>
+                        
+                        <div class="timeline-item transport">
+                            <div class="time-range">09:30 - 10:30</div>
+                            <div class="activity">🚕 机场→酒店
+                                <span class="tag tag-transport">打车30min</span>
+                            </div>
+                            <div class="detail">重庆江北机场→渝中区开元名都酒店，打车约¥80</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">10:30 - 11:00</div>
+                            <div class="activity">🏨 酒店办理入住
+                                <span class="tag tag-hotel">寄存行李</span>
+                            </div>
+                            <div class="detail">到前台办理入住（可能需等待14:00正式入住），先寄存行李</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">11:00 - 11:30</div>
+                            <div class="activity">🍽️ 午餐（酒店附近）
+                                <span class="tag tag-meal">简餐</span>
+                            </div>
+                            <div class="detail">解放碑/洪崖洞附近众多重庆美食可选</div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">13:00 - 15:00</div>
+                            <div class="activity">📍 会场筹备模拟
+                                <span class="tag tag-meeting">筹备组</span>
+                            </div>
+                            <div class="detail">重庆国际会议展览中心（南岸区），驾车约15-20分钟<br>配合筹备小组走流程、确认场地布置</div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">15:00 - 17:00</div>
+                            <div class="activity">🏢 直营店线下会议
+                                <span class="tag tag-meeting">重要</span>
+                            </div>
+                            <div class="detail">4月23日下午的直营店会议。如会议地点在会场内，可无缝衔接；如需更换地点，预留30分钟交通时间</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">17:30 - 18:30</div>
+                            <div class="activity">🍽️ 晚餐
+                                <span class="tag tag-meal">团队聚餐？</span>
+                            </div>
+                            <div class="detail">会议结束后团队聚餐或自由安排</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">18:30 - 21:00</div>
+                            <div class="activity">🌙 自由时间</div>
+                            <div class="detail">推荐：洪崖洞夜景 / 解放碑步行街 / 长江索道<br>酒店步行5分钟即到洪崖洞</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">21:00</div>
+                            <div class="activity">💤 回酒店休息，准备24日全天会议</div>
+                            <div class="detail">检查会议资料、衣物准备，保证充足睡眠</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 1: 4月23日 -->
+                    <div class="timeline-day">
+                        <div class="timeline-day-header">📅 4月23日（周三）· 会议日+直营店线下会议</div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">07:00 - 08:00</div>
+                            <div class="activity">🌅 起床+早餐
+                                <span class="tag tag-meal">酒店含早</span>
+                            </div>
+                            <div class="detail">百达屋会员价含早餐，酒店山海极宴餐厅用餐</div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">08:00 - 08:30</div>
+                            <div class="activity">🚕 出发前往会场
+                                <span class="tag tag-transport">驾车15-20min</span>
+                            </div>
+                            <div class="detail">建议08:30前到达会场，留出签到/找座位时间</div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">09:00 - 12:00</div>
+                            <div class="activity">🏢 上午会议议程
+                                <span class="tag tag-meeting">电总回家日</span>
+                            </div>
+                            <div class="detail">按会议议程参加（详见议程图）</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">12:00 - 13:30</div>
+                            <div class="activity">🍽️ 午餐
+                                <span class="tag tag-meal">会场/周边</span>
+                            </div>
+                            <div class="detail">如会场提供午餐则就地用餐，否则会场附近简餐</div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">13:30 - 14:00</div>
+                            <div class="activity">📍 会场筹备模拟（第二轮）
+                                <span class="tag tag-meeting">筹备组</span>
+                            </div>
+                            <div class="detail">下午会议开始前完成最终筹备确认</div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">14:00 - 17:00</div>
+                            <div class="activity">🏢 下午直营店线下会议
+                                <span class="tag tag-meeting">重要</span>
+                            </div>
+                            <div class="detail">直营店相关议程，需重点关注</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">17:00 - 18:00</div>
+                            <div class="activity">📝 会议总结/整理笔记</div>
+                            <div class="detail">整理当天会议要点，为24日全天参会做准备</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">18:00 - 20:00</div>
+                            <div class="activity">🍽️ 晚餐 + 团队交流</div>
+                            <div class="detail">推荐尝试重庆火锅（酒店附近/解放碑）</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">20:00 - 21:00</div>
+                            <div class="activity">🌙 休息或短途散步</div>
+                            <div class="detail">推荐：朝天门两江夜景 / 解放碑夜景</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 2: 4月24日 -->
+                    <div class="timeline-day">
+                        <div class="timeline-day-header day2">📅 4月24日（周四）· 全天会议</div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">07:00 - 08:00</div>
+                            <div class="activity">🌅 起床+早餐
+                                <span class="tag tag-meal">酒店含早</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">08:00 - 08:30</div>
+                            <div class="activity">🚕 出发前往会场
+                                <span class="tag tag-transport">驾车15-20min</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">08:30 - 12:00</div>
+                            <div class="activity">🏢 上午会议
+                                <span class="tag tag-meeting">全天参会</span>
+                            </div>
+                            <div class="detail">全天会议议程（详见议程图）</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">12:00 - 13:30</div>
+                            <div class="activity">🍽️ 午餐</div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">13:30 - 18:00</div>
+                            <div class="activity">🏢 下午会议
+                                <span class="tag tag-meeting">全天参会</span>
+                            </div>
+                            <div class="detail">下午会议至18:00结束</div>
+                        </div>
+                        
+                        <div class="timeline-item meeting">
+                            <div class="time-range">18:00 - 18:30</div>
+                            <div class="activity">🚕 会场→酒店/机场</div>
+                            <div class="detail">会议结束后取行李，前往机场或高铁站</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="time-range">18:30 - 19:00</div>
+                            <div class="activity">🍽️ 晚餐（简餐）</div>
+                            <div class="detail">机场/车站附近快速用餐</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Return -->
+                    <div class="timeline-day">
+                        <div class="timeline-day-header" style="background: #059669;">✈️ 返程方案</div>
+                        
+                        <div class="timeline-item transport">
+                            <div class="time-range">20:00 - 20:30</div>
+                            <div class="activity">✈️ 方案A：当晚航班返程
+                                <span class="tag tag-transport">推荐21:00后</span>
+                            </div>
+                            <div class="detail">重庆江北→天津滨海，约2.5小时，23:30到达天津<br>
+                            <a href="https://flights.ctrip.com/online/list/oneway-CKG-TSN?depdate=2026-04-24&cabin=y" target="_blank" style="color: var(--delonix-blue);">→ 携程查票</a></div>
+                        </div>
+                        
+                        <div class="timeline-item transport">
+                            <div class="time-range">次日 08:05</div>
+                            <div class="activity">🚄 方案B：25日高铁返程
+                                <span class="tag tag-transport">G1709直达</span>
+                            </div>
+                            <div class="detail">重庆北→天津西，08:05-17:53，¥898二等座<br>优点：24日晚可休息，不用赶夜路<br>
+                            <a href="https://www.12306.cn/" target="_blank" style="color: var(--delonix-blue);">→ 12306查票</a></div>
+                        </div>
+                        
+                        <div style="background: #FEF3C7; border-radius: 10px; padding: 15px; margin-top: 15px;">
+                            <p><strong>💡 返程建议</strong>：24日全天会议18:00结束，时间较晚。如选择当晚飞机，建议订21:00后航班；如不想太赶，25日早班高铁更为稳妥。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Budget -->
+            <section class="budget">
+                <h2><span class="icon icon-budget">💰</span> 预算明细（商务档）</h2>
+                
+                <table class="budget-table">
+                    <thead>
+                        <tr>
+                            <th>项目</th>
+                            <th>方案A（飞机往返）</th>
+                            <th>方案B（飞机去高铁回）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>✈️ 天津→重庆 机票</td>
+                            <td>¥600-900</td>
+                            <td>¥600-900</td>
+                        </tr>
+                        <tr>
+                            <td>✈️ 重庆→天津 机票</td>
+                            <td>¥600-900</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>🚄 重庆→天津 高铁</td>
+                            <td>-</td>
+                            <td>¥898（二等座）</td>
+                        </tr>
+                        <tr>
+                            <td>🏨 住宿（2晚）</td>
+                            <td colspan="2">¥1,600 - 3,000（开元名都）</td>
+                        </tr>
+                        <tr>
+                            <td>🍽️ 餐饮（3天）</td>
+                            <td colspan="2">¥450 - 600</td>
+                        </tr>
+                        <tr>
+                            <td>🚕 市内交通</td>
+                            <td colspan="2">¥200 - 300（打车/地铁）</td>
+                        </tr>
+                        <tr>
+                            <td>📱 通讯/杂费</td>
+                            <td colspan="2">¥100 - 150</td>
+                        </tr>
+                        <tr>
+                            <td>🧳 机场建设费+燃油</td>
+                            <td>¥240（往返）</td>
+                            <td>¥120（单程）</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>💰 总计</strong></td>
+                            <td><strong>¥3,790 - 5,990</strong></td>
+                            <td><strong>¥3,968 - 5,968</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 15px; padding: 12px 18px; background: #EFF6FF; border-radius: 8px; font-size: 13px;">
+                    <p><strong>📝 说明</strong>：百达屋会员价含双早（价值约¥200/天），可节省¥400餐饮费。实际总预算可降低至约 <strong>¥3,200 - 4,500</strong>。</p>
+                </div>
+            </section>
+            
+            <!-- Destination Tips -->
+            <section class="tips">
+                <h2><span class="icon icon-tips">💡</span> 重庆出行攻略</h2>
+                
+                <div class="tips-grid">
+                    <div class="tip-card weather">
+                        <h4>🌤️ 4月下旬天气</h4>
+                        <ul>
+                            <li>气温：18-26°C，温暖舒适</li>
+                            <li>多阵雨，建议携带雨伞</li>
+                            <li>湿度较大，体感略闷</li>
+                            <li>早晚温差约8°C</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card clothing">
+                        <h4>👔 穿搭建议</h4>
+                        <ul>
+                            <li>会议：正装/商务休闲</li>
+                            <li>日常：薄外套+长裤</li>
+                            <li>鞋子：舒适防滑（重庆多坡道）</li>
+                            <li>必备：雨伞、薄外套</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card food">
+                        <h4>🍲 必吃美食</h4>
+                        <ul>
+                            <li>火锅：珮姐/大龙燚/秦妈</li>
+                            <li>小面：花市豌杂面</li>
+                            <li>江湖菜：杨记隆府</li>
+                            <li>夜宵：解放碑八一好吃街</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card packing">
+                        <h4>🧳 出行清单</h4>
+                        <ul>
+                            <li>✅ 身份证/护照</li>
+                            <li>✅ 会议资料/笔记本</li>
+                            <li>✅ 百达屋会员卡</li>
+                            <li>✅ 充电器/充电宝</li>
+                            <li>✅ 雨伞/薄外套</li>
+                            <li>✅ 常用药品</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Fallback Channels -->
+            <section class="fallback-channels">
+                <h2><span class="icon icon-fallback">📋</span> 备选预订渠道</h2>
+                <p style="margin-bottom: 15px; color: var(--gray-dark);">如需比价或有其他需求，以下渠道也可预订德胧旗下酒店：</p>
+                
+                <div class="fallback-grid">
+                    <div class="fallback-card">
+                        <h4>备选①：万豪旅享家</h4>
+                        <p style="margin: 5px 0;">臻品之选专属</p>
+                        <p style="margin: 5px 0;"><strong style="color: var(--marriott-gold);">重庆开元名都·臻品之选</strong></p>
+                        <a href="https://www.marriott.com.cn/hotels/ckggb/rooms/" target="_blank" class="btn" style="background: var(--marriott-gold); color: white; padding: 8px 16px; font-size: 13px; margin-top: 10px;">
+                            万豪预订
+                        </a>
+                    </div>
+                    
+                    <div class="fallback-card">
+                        <h4>备选②：携程</h4>
+                        <p style="margin: 5px 0;">比价参考 · 企业协议价</p>
+                        <div style="margin-top: 10px;">
+                            <a href="https://hotels.ctrip.com/hotels/132558466.html" target="_blank" class="btn btn-ctrip" style="padding: 8px 12px; font-size: 12px; margin-bottom: 6px; display: block;">
+                                开元名都（¥800-1500）
+                            </a>
+                            <a href="https://hotels.ctrip.com/hotels/132460794.html" target="_blank" class="btn btn-ctrip" style="padding: 8px 12px; font-size: 12px; display: block;">
+                                解放碑名庭（¥400-700）
+                            </a>
+                            <a href="https://hotels.ctrip.com/hotels/112363382.html" target="_blank" class="btn btn-ctrip" style="padding: 8px 12px; font-size: 12px; display: block;">
+                                南岸名庭（¥300-500）
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="fallback-card">
+                        <h4>备选②：飞猪</h4>
+                        <p style="margin: 5px 0;">阿里系用户 · 会员价</p>
+                        <a href="https://www.fliggy.com/hotel/?cityId=500000&checkIn=2026-04-22&checkOut=2026-04-24&keyword=开元名都" target="_blank" class="btn btn-fliggy" style="padding: 8px 16px; font-size: 13px; margin-top: 10px;">
+                            飞猪搜索
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="fallback-note">
+                    <strong>⚠️ 重要提示</strong>：百达屋APP预订享受<strong>会员最优价保证</strong> + 时光值累积（住十兑一）+ 含双早。备选渠道仅供比价参考。
+                </div>
+            </section>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-cta">
+                <p>📱 <strong>推荐使用百达屋APP预订</strong></p>
+                <p>享受德胧旗下店总专属会员价 + 时光值累积 + 双早权益</p>
+                <small>如需要百达屋APP Deep Link（bdwhotel://）直接打开APP预订，请联系德胧技术团队。</small>
+            </div>
+            
+            <p>© 2026 德胧酒店集团（Delonix Group）· 百达屋（Betterwood）会员服务</p>
+            <p class="copyright">本报告由德胧商旅出行规划技能 v2.1 生成 · 生成时间：2026-04-09 11:50</p>
+            <p class="copyright">所有链接均为真实可跳转链接，点击即可访问对应平台 · 德胧优先推荐体系</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Tab switching for transport
+        function switchTab(type) {
+            // Hide all panels
+            document.querySelectorAll('.transport-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.transport-tab').forEach(t => t.classList.remove('active'));
+            
+            // Show selected
+            document.getElementById('panel-' + type).classList.add('active');
+            
+            // Find and activate the clicked tab
+            const tabs = document.querySelectorAll('.transport-tab');
+            tabs.forEach(tab => {
+                if (tab.textContent.toLowerCase().includes(type === 'flight' ? '飞机' : '高铁')) {
+                    tab.classList.add('active');
+                }
+            });
+        }
+        
+        // Button click feedback
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    this.style.transform = 'scale(0.97)';
+                    setTimeout(() => { this.style.transform = ''; }, 150);
+                    if (this.getAttribute('href') && this.getAttribute('href').startsWith('http')) {
+                        console.log('跳转到:', this.getAttribute('href'));
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
