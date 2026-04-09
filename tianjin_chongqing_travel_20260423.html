@@ -724,6 +724,34 @@
             margin-top: 12px;
         }
         
+        /* Demo Watermark */
+        .demo-banner {
+            background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 100;
+        }
+        .demo-banner::before {
+            content: "⚠️ DEMO 演示文件 - 数据均为虚构，仅供展示报告格式";
+        }
+        .demo-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(220, 38, 38, 0.06);
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             body { padding: 10px; }
@@ -738,6 +766,8 @@
     </style>
 </head>
 <body>
+    <div class="demo-watermark">DEMO</div>
+    <div class="demo-banner"></div>
     <div class="container">
         <!-- Header -->
         <header>
@@ -1365,7 +1395,8 @@
             </div>
             
             <p>© 2026 德胧酒店集团（Delonix Group）· 百达屋（Betterwood）会员服务</p>
-            <p class="copyright">本报告由德胧商旅出行规划技能 v2.1 生成 · 生成时间：2026-04-09 11:50</p>
+            <p class="copyright">⚠️ 本报告为 DEMO 演示文件，所有数据（价格/班次/天气/美食）均为虚构，仅供展示报告格式</p>
+            <p class="copyright">真实使用时，所有数据均通过12306/携程/高德地图实时查询获取</p>
             <p class="copyright">所有链接均为真实可跳转链接，点击即可访问对应平台 · 德胧优先推荐体系</p>
         </footer>
     </div>
